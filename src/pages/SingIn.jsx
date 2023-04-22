@@ -12,8 +12,8 @@ export default function SingIn() {
   const navigate=useNavigate()
   return (
     <>
-      <div className="text-center my-6 text-2xl font-bold">Sign In</div>
-      <div className="max-w-screen-lg flex flex-col md:flex-row justify-between items-center mx-6 lg:mx-auto">
+      <div className="my-6 text-2xl font-bold text-center">Sign In</div>
+      <div className="flex flex-col items-center justify-between max-w-screen-lg mx-6 md:flex-row lg:mx-auto">
         <img
           src="https://images.unsplash.com/flagged/photo-1564767609342-620cb19b2357"
           alt="sign in"
@@ -23,7 +23,7 @@ export default function SingIn() {
           <form className="flex flex-col space-y-6">
             <input
               type="text"
-              className="h-10 w-full rounded-md p-4"
+              className="w-full h-10 p-4 rounded-md"
               placeholder="Email address"
               onChange={(e) =>
                 setFormData({ ...formData, email: e.target.value })
@@ -33,7 +33,7 @@ export default function SingIn() {
             <div className="relative">
               <input
                 type={`${isShown ? "text" : "password"}`}
-                className="h-10 w-full rounded-md p-4 mb-4"
+                className="w-full h-10 p-4 mb-4 rounded-md"
                 placeholder="Password"
                 onChange={(e) =>
                   setFormData({ ...formData, password: e.target.value })
@@ -41,7 +41,7 @@ export default function SingIn() {
                 value={formData.password}
               />
               <div
-                className="absolute top-3 right-2 text-xl cursor-pointer"
+                className="absolute text-xl cursor-pointer top-3 right-2"
                 onClick={() => setIsShown(!isShown)}>
                 {isShown ? <AiFillEyeInvisible /> : <AiFillEye />}
               </div>
@@ -53,7 +53,7 @@ export default function SingIn() {
                 <Link
                   to="/sign-up"
                   onClick={""}
-                  className="ml-1 text-red-600 hover:text-red-700 transition duration-200 ease-in-out">
+                  className="ml-1 text-red-600 transition duration-200 ease-in-out hover:text-red-700">
                   Register
                 </Link>
               </div>
@@ -61,7 +61,15 @@ export default function SingIn() {
                 Forgot Password
               </Link>
             </div>
-            <OAuth blueButtonData="sign in"/>
+            <div className="flex flex-col my-3 space-y-3">
+              <button className="w-full h-10 text-sm text-center text-white uppercase transition duration-200 ease-in-out bg-blue-500 rounded-md shadow-md hover:bg-blue-700 active:bg-blue-800 hover:shadow-lg">
+                Sign in
+              </button>
+              <div className="flex items-center px-2 before:border-t-[2px] before:flex-1  before:border-gray-300 after:border-t-[2px] after:flex-1  after:border-gray-300 uppercase">
+                <p className="mx-2">or</p>
+              </div>
+              <OAuth />
+            </div>
           </form>
         </div>
       </div>

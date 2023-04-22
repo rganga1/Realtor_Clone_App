@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 import OAuth from "../components/OAuth";
 
 export default function ForgotPassword() {
-  const [email,setEmail] = useState("");
+  const [email, setEmail] = useState("");
   return (
     <>
-      <div className="text-center my-6 text-2xl font-bold">Sign In</div>
-      <div className="max-w-screen-lg flex flex-col md:flex-row justify-between items-center mx-6 lg:mx-auto">
+      <div className="my-6 text-2xl font-bold text-center">Sign In</div>
+      <div className="flex flex-col items-center justify-between max-w-screen-lg mx-6 md:flex-row lg:mx-auto">
         <img
           src="https://images.unsplash.com/flagged/photo-1564767609342-620cb19b2357"
           alt="sign in"
@@ -17,29 +17,20 @@ export default function ForgotPassword() {
           <form className="flex flex-col space-y-6">
             <input
               type="text"
-              className="h-10 w-full rounded-md p-4"
+              className="w-full h-10 p-4 rounded-md"
               placeholder="Email address"
-              onChange={(e) =>
-                setEmail(e.target.value )
-              }
+              onChange={(e) => setEmail(e.target.value)}
               value={email}
             />
-
-            <div className="flex justify-between space-x-3 text-sm whitespace-nowrap">
-              <div>
-                Don't have an account?
-                <Link
-                  to="/sign-up"
-                  onClick={""}
-                  className="ml-1 text-red-600 hover:text-red-700 transition duration-200 ease-in-out">
-                  Register
-                </Link>
+            <div className="flex flex-col my-3 space-y-3">
+              <button className="w-full h-10 text-sm text-center text-white uppercase transition duration-200 ease-in-out bg-blue-500 rounded-md shadow-md hover:bg-blue-700 active:bg-blue-800 hover:shadow-lg">
+                Send reset email
+              </button>
+              <div className="flex items-center px-2 before:border-t-[2px] before:flex-1  before:border-gray-300 after:border-t-[2px] after:flex-1  after:border-gray-300 uppercase">
+                <p className="mx-2">or</p>
               </div>
-              <Link to="/sign" className="text-red-500 ml-3">
-                Sign in instead
-              </Link>
+              <OAuth />
             </div>
-            <OAuth blueButtonData="send reset email" />
           </form>
         </div>
       </div>

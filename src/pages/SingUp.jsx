@@ -2,6 +2,15 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import OAuth from "../components/OAuth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+import { db } from "../firebase";
+import { doc, serverTimestamp, setDoc } from "firebase/firestore";
+import { toast } from "react-toastify";
+
 export default function SingUp() {
   const [formData, setFormData] = useState({
     username: "",
@@ -10,6 +19,35 @@ export default function SingUp() {
   });
   const [isShown, setIsShown] = useState(false);
   const navigate = useNavigate();
+  const { name, email, password } = formData;
+  async function onSubmit(e) {
+    e.preventDefault();
+
+    try {
+      const auth = getAuth();
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+      updateProfile(auth.currentUser, {
+        displayName: name,
+      });
+      const user = userCredential.user;
+      // console.log('user', user)
+      const formDataCopy = { ...formData };
+      delete formDataCopy.password;
+      formDataCopy.timestamp = serverTimestamp();
+
+      await setDoc(doc(db, "users", user.uid), formDataCopy);
+      toast.success("Sign up was successful");
+      navigate("/");
+    } catch (error) {
+      toast.error("Something went wrong with the registration");
+      console.log('error', error)     
+    }
+  }
   return (
     <>
       <div className="my-6 text-2xl font-bold text-center">Sign In</div>
@@ -20,7 +58,7 @@ export default function SingUp() {
           className="rounded-xl md:w-1/2 md:mr-4 lg:mx-12"
         />
         <div className="w-full md:w-1/2 ">
-          <form className="flex flex-col space-y-6">
+          <form className="flex flex-col space-y-6" onSubmit={onSubmit}>
             <input
               type="text"
               className="w-full h-10 p-4 rounded-md"
@@ -28,7 +66,7 @@ export default function SingUp() {
               onChange={(e) =>
                 setFormData({ ...formData, username: e.target.value })
               }
-              value={formData.email}
+              value={formData.username}
             />
             <input
               type="text"
@@ -79,10 +117,6 @@ export default function SingUp() {
               <div className="flex items-center px-2 before:border-t-[2px] before:flex-1  before:border-gray-300 after:border-t-[2px] after:flex-1  after:border-gray-300 uppercase">
                 <p className="mx-2">or</p>
               </div>
-              {/* <button className="flex items-center justify-center w-full h-10 text-sm text-center text-white uppercase transition duration-200 ease-in-out bg-red-500 rounded-md shadow-md hover:bg-red-700 active:bg-red-800 hover:shadow-lg">
-                <FcGoogle className="mr-1 text-xl bg-white rounded-full" />
-                <p>continue with google</p>
-              </button> */}
               <OAuth />
             </div>
           </form>

@@ -7,13 +7,13 @@ export default function Header() {
       return true;
     }
   }
-  console.log("location", location);
+  // console.log("location", location);
   // console.log("Path",`${
   //   pathMathRoute("/") ? "text-black border-b-red-500":""
   // }`)
   return (
-    <div className="bg-white border-b shadow-sm sticky top-0 z-50">
-      <header className="flex justify-between items-center px-3 max-w-6xl mx-auto">
+    <div className="sticky top-0 z-50 bg-white border-b shadow-sm">
+      <header className="flex items-center justify-between max-w-6xl px-3 mx-auto">
         <div>
           <img
             src="https://static.rdc.moveaws.com/images/logos/rdc-logo-default.svg"

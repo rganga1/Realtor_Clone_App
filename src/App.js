@@ -5,6 +5,7 @@ import Profile from "./pages/Profile"
 import SingUp from "./pages/SingUp"
 import SingIn from "./pages/SingIn"
 import ForgotPassword from "./pages/ForgotPassword"
+import Header from "./components/Header";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
     // </div>
     <>
       <Router>
+        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />

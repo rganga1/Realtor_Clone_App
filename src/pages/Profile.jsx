@@ -1,9 +1,10 @@
 import { getAuth, updateProfile } from "firebase/auth";
 import { doc, updateDoc } from "firebase/firestore";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { db } from "../firebase";
+import { FcHome } from "react-icons/fc";
 
 export default function Profile() {
   const auth = getAuth();
@@ -81,17 +82,25 @@ export default function Profile() {
                     changeDetail && onSubmit();
                     setChangeDetail((prevState) => !prevState);
                   }}
-                  className="ml-1 text-red-600 transition duration-200 ease-in-out cursor-pointer hover:text-red-700">
+                  className="ml-1 text-red-600 transition duration-200 ease-in-out cursor-pointer hover:text-red-700"
+                >
                   {changeDetail ? "Apply change" : "Edit"}
                 </span>
               </p>
               <p
                 onClick={onLogout}
-                className="text-blue-600 transition duration-200 ease-in-out cursor-pointer hover:text-blue-800">
+                className="text-blue-600 transition duration-200 ease-in-out cursor-pointer hover:text-blue-800"
+              >
                 Sign out
               </p>
             </div>
           </form>
+          <button type="submit" className="w-full py-3 text-sm font-medium text-white uppercase transition duration-150 ease-in-out bg-blue-600 rounded shadow-md px-7 hover:bg-blue-700 hover:shadow-lg active:bg-blue-800">
+            <Link to="/create-listing" className="flex items-center justify-center">
+              <FcHome className="p-1 mr-2 text-3xl bg-red-200 border-2 rounded-full"/>
+              Sell or rent your home
+            </Link>
+          </button>
         </div>
       </section>
     </>

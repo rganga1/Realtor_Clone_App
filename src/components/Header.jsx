@@ -21,7 +21,7 @@ export default function Header() {
     }
   }
   return (
-    <div className="sticky top-0 z-50 bg-white border-b shadow-sm">
+    <div className="sticky top-0 z-40 bg-white border-b shadow-sm">
       <header className="flex items-center justify-between max-w-6xl px-3 mx-auto">
         <div>
           <img
@@ -37,16 +37,14 @@ export default function Header() {
               className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
                 pathMatchRoute("/") && "text-black border-b-red-500"
               }`}
-              onClick={() => navigate("/")}
-            >
+              onClick={() => navigate("/")}>
               Home
             </li>
             <li
               className={`cursor-pointer py-3 text-sm font-semibold text-gray-400 border-b-[3px] border-b-transparent ${
                 pathMatchRoute("/offers") && "text-black border-b-red-500"
               }`}
-              onClick={() => navigate("/offers")}
-            >
+              onClick={() => navigate("/offers")}>
               Offers
             </li>
             <li
@@ -54,8 +52,7 @@ export default function Header() {
                 (pathMatchRoute("/sign-in") || pathMatchRoute("/profile")) &&
                 "text-black border-b-red-500"
               }`}
-              onClick={() => navigate("/profile")}
-            >
+              onClick={() => navigate("/profile")}>
               {pageState}
             </li>
           </ul>

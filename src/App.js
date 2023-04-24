@@ -8,6 +8,7 @@ import ForgotPassword from "./pages/ForgotPassword";
 import Header from "./components/Header";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
@@ -19,7 +20,9 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile" element={<PrivateRoute />}>
+            <Route index element={<Profile />} />
+          </Route>
           <Route path="/sign-in" element={<SingIn />} />
           <Route path="/sign-up" element={<SingUp />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />

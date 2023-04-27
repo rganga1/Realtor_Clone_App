@@ -51,13 +51,13 @@ export default function SingUp() {
   return (
     <>
       <div className="my-6 text-2xl font-bold text-center">Sign In</div>
-      <div className="flex flex-col items-center justify-between max-w-screen-lg mx-6 md:flex-row lg:mx-auto">
+      <div className="flex flex-col items-center justify-between max-w-screen-lg mx-6 space-y-8 md:space-y-0 space md:flex-row lg:mx-auto">
         <img
           src="https://images.unsplash.com/flagged/photo-1564767609342-620cb19b2357"
           alt="sign in"
           className="rounded-xl md:w-1/2 md:mr-4 lg:mx-12"
         />
-        <div className="w-full md:w-1/2 ">
+        <div className="w-full md:w-1/2">
           <form className="flex flex-col space-y-6" onSubmit={onSubmit}>
             <input
               type="text"

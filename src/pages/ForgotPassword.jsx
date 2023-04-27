@@ -20,7 +20,7 @@ export default function ForgotPassword() {
   return (
     <>
       <div className="my-6 text-2xl font-bold text-center">Sign In</div>
-      <div className="flex flex-col items-center justify-between max-w-screen-lg mx-6 md:flex-row lg:mx-auto">
+      <div className="flex flex-col items-center justify-between max-w-screen-lg mx-6 space-y-8 md:flex-row md:space-y-0 lg:mx-auto">
         <img
           src="https://images.unsplash.com/flagged/photo-1564767609342-620cb19b2357"
           alt="sign in"

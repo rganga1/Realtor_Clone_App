@@ -160,6 +160,7 @@ export default function CreateListing() {
       imgUrls,
       geolocation,
       timestamp: serverTimestamp(),
+      userRef: auth.currentUser.uid,
     };
     delete formDataCopy.images;
     !formDataCopy.offer && delete formDataCopy.discountedPrice;
@@ -189,7 +190,8 @@ export default function CreateListing() {
               type === "rent"
                 ? "bg-white text-black"
                 : "bg-slate-600 text-white"
-            }`}>
+            }`}
+          >
             sell
           </button>
           <button
@@ -201,7 +203,8 @@ export default function CreateListing() {
               type === "sale"
                 ? "bg-white text-black"
                 : "bg-slate-600 text-white"
-            }`}>
+            }`}
+          >
             rent
           </button>
         </div>
@@ -254,7 +257,8 @@ export default function CreateListing() {
             onClick={onChange}
             className={`mr-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${
               !parking ? "bg-white text-black" : "bg-slate-600 text-white"
-            }`}>
+            }`}
+          >
             Yes
           </button>
           <button
@@ -264,7 +268,8 @@ export default function CreateListing() {
             onClick={onChange}
             className={`ml-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${
               parking ? "bg-white text-black" : "bg-slate-600 text-white"
-            }`}>
+            }`}
+          >
             no
           </button>
         </div>
@@ -277,7 +282,8 @@ export default function CreateListing() {
             onClick={onChange}
             className={`mr-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${
               !furnished ? "bg-white text-black" : "bg-slate-600 text-white"
-            }`}>
+            }`}
+          >
             yes
           </button>
           <button
@@ -287,7 +293,8 @@ export default function CreateListing() {
             onClick={onChange}
             className={`ml-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${
               furnished ? "bg-white text-black" : "bg-slate-600 text-white"
-            }`}>
+            }`}
+          >
             no
           </button>
         </div>
@@ -350,7 +357,8 @@ export default function CreateListing() {
             onClick={onChange}
             className={`mr-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${
               !offer ? "bg-white text-black" : "bg-slate-600 text-white"
-            }`}>
+            }`}
+          >
             yes
           </button>
           <button
@@ -360,7 +368,8 @@ export default function CreateListing() {
             onClick={onChange}
             className={`ml-3 px-7 py-3 font-medium text-sm uppercase shadow-md rounded hover:shadow-lg focus:shadow-lg active:shadow-lg transition duration-150 ease-in-out w-full ${
               offer ? "bg-white text-black" : "bg-slate-600 text-white"
-            }`}>
+            }`}
+          >
             no
           </button>
         </div>
@@ -429,7 +438,8 @@ export default function CreateListing() {
         </div>
         <button
           type="submit"
-          className="w-full py-3 mb-6 text-sm font-medium text-white uppercase transition duration-150 ease-in-out bg-blue-600 rounded shadow-md px-7 hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg active:bg-blue-800 active:shadow-lg">
+          className="w-full py-3 mb-6 text-sm font-medium text-white uppercase transition duration-150 ease-in-out bg-blue-600 rounded shadow-md px-7 hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg active:bg-blue-800 active:shadow-lg"
+        >
           Create Listing
         </button>
       </form>

@@ -34,10 +34,7 @@ jobs:
         uses: actions/checkout@v2
       - name: npm commands
         run: |
-          pwd
-          ls
-          cd /home/runner/work/realtor/web-app
-          pwd
+          pwd          
           npm install
           npm run build
       - name: Deploy to my EC2 instance

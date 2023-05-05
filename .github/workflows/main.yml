@@ -1,1 +1,50 @@
-name: Frontend-Workflow
+name: frontend-dev
+
+on:
+#   push:
+#     branches: [ develop ]
+#     paths: ["web-app/**","nginx_server/**"]
+  # pull_request:
+  #   branches: [ develop ]
+  #   paths: ["web-app/**"]
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'debug'
+        type: choice
+        options:
+        - info
+        - warning
+        - debug
+  # schedule:
+  #   - cron: '30 20 * * ?'
+  #   # - cron: '0 2 * * ?'        
+
+jobs:
+  Building-and-deploying:
+    runs-on: ubuntu-latest
+    # if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'workflow_dispatch'
+    steps:
+      - name: npm-version
+        run: node --version
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: npm commands
+        run: |
+          pwd
+          ls
+          cd /home/runner/work/realtor/web-app
+          pwd
+          npm install
+          npm run build
+      - name: Deploy to my EC2 instance
+        uses: easingthemes/ssh-deploy@v4
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }} 
+          SOURCE: "web-app/build/*"
+          REMOTE_HOST: "ec2-3-110-194-130.ap-south-1.compute.amazonaws.com" 
+          REMOTE_USER: "ubuntu"
+          TARGET: "/var/www/front.aware.com"

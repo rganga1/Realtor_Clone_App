@@ -1,4 +1,30 @@
-# Getting Started with Create React App
+# Udemy Course
+This is hosted at http://3.110.194.130/ (not https) in EC2 instance with CI/CD setup using github actions.  
+This project is part of udemy couse (ReactJS 18, Firebase 9 Project) - https://www.udemy.com/course/reactjs-firebase-project/ 
+
+## Course Highlights
+Use Firebase auth for complete authentication  
+Use Firebase Firestore to store and fetch data  
+Learn how to sign up/in the users using username/password and Google oAuth using Firebase auth  
+Add forgot password functionality using Firebase auth  
+Work with latest versions like React js 18, Firebase 9 and Tailwind CSS 3  
+Learn the CRUD operations including create, read, update and delete using Firebase Firestore  
+Learn react router version 6 (latest version) to create routes, get the params and redirect  
+Learn how to create pages and routes in a react project  
+Learn how to use react toastify to create nice notifications  
+Learn to create private route and custom hook for protecting the user profile page  
+Learn how to create a beautiful spinner and loader  
+Learn important react event listeners like onChange and onSubmit  
+Create a reusable component such as listing cards  
+Create an image slider using Swiper js latest version  
+Add map to the page using leaflet and react leaflet packages  
+Learn how to deploy to vercel  
+Learn Google geolocation api and how to convert address to latitude and longitude  
+Learn how to use Tailwind CSS 3 to style a react project  
+Learn useEffect and useState react hooks  
+
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
